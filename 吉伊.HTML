@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吉伊的世界</title>
+    
+   <style>
+.con {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+body {
+  display:flex;
+  margin: 0;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+.header {
+  position: fixed;       /* 固定在页面顶部，不随滚动或图片变化移动 */
+  top: 20px;             /* 距离顶部 */
+  width: 100%;           /* 水平占满 */
+  text-align: center;    /* 居中 */
+  font-size: 60px;
+  font-weight: bold;
+  color: #fc368f;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  z-index: 1000;         /* 层级很高，保证在图片和按钮之上 */
+}
+img {
+  width: 500px;      /* 固定宽度，可根据需要调整 */
+  height: 500px;     /* 固定高度，使图片显示大小一致 */
+  object-fit: cover; /* 保持比例裁剪图片填满框 */
+  transition: transform 0.3s;
+}
+
+
+
+.btn-row {
+  position: absolute;
+  top: 1600px;   
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+button {
+  border-radius:100px; 
+  background: linear-gradient(135deg, #fc368f, #f5f2f2);
+  padding: 40px 80px;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+#likeText {
+  display: none;        /* 初始隐藏 */
+  margin-top: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #ff7f50;
+  text-align: center;
+}
+
+</style>
+</head>
+<div class="header">你愿意当我的妈妈吗</div>
+<div id="likeText">喜欢你！～(∠・ω< )⌒☆</div>
+<div class="con">
+  <img src="照片/盯1.png" alt="" id="盯">
+    <div class="btn-row">
+        <button id="no">不愿意</button>
+        <button id="yes">愿意</button>
+    </div>
+</div>
+<script>
+const images = [
+    "照片/盯1.png",
+    "照片/吃.png",
+    "照片/打气.png",
+    "照片/开心2.png",
+    "照片/放气3.png",
+    "照片/可怜4.png",
+    "照片/揉脸5.gif",
+    "照片/委屈6.gif",
+    "照片/哭7.gif",
+    "照片/哭8.gif",
+    "照片/哭.jpeg",
+    "照片/哭.png",
+   ];
+let currentIndex = 0; // 初始显示第0张图片
+const img = document.getElementById('盯');
+const noBtn = document.getElementById('no');
+const yesBtn = document.getElementById('yes');
+let scale = 1; // 初始比例
+
+noBtn.addEventListener('click', () => {
+  scale += 0.2; // 每次点击放大愿意按钮
+  yesBtn.style.transform = `scale(${scale})`;
+
+  if (currentIndex < images.length - 1) {
+    currentIndex += 1;       // 图片索引加1
+  }
+
+  // 无论是否是最后一张，显示当前图片
+  img.src = images[currentIndex];
+});
+
+yesBtn.addEventListener('click', () => {
+  img.src="照片/笑.jpeg"
+   likeText.style.display = "block";  // 点击愿意显示文字
+})
+</script>
+</body>
+</html> 
